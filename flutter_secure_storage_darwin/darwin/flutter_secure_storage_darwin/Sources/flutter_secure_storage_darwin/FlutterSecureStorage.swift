@@ -192,10 +192,8 @@ class FlutterSecureStorage {
 
         if let flags = params.accessControlFlags, !flags.isEmpty,
            let accessControl = createAccessControl(params: params) {
-            print("HODEI NO!")
             query[kSecAttrAccessControl] = accessControl
         } else {
-            print("HODEI YES!")
             if let accessibilityLevel = params.accessibilityLevel {
                 query[kSecAttrAccessible] = parseAccessibleAttr(accessibilityLevel)
             }
