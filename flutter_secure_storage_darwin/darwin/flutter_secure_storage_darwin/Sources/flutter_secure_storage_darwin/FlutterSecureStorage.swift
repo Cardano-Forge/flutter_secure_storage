@@ -191,8 +191,8 @@ class FlutterSecureStorage {
         }
 
         if let flags = params.accessControlFlags, !flags.isEmpty,
+           let accessControl = createAccessControl(params: params) {
             print("HODEI NO!")
-            let accessControl = createAccessControl(params: params) {
             query[kSecAttrAccessControl] = accessControl
         } else {
             print("HODEI YES!")
@@ -203,6 +203,7 @@ class FlutterSecureStorage {
                 query[kSecAttrSynchronizable] = isSynchronizable
             }
         }
+
         
         #if os(macOS)
         if #available(macOS 10.15, *) {
